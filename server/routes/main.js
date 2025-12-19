@@ -7,7 +7,7 @@ router.get("/", async (req, res)=> {
   try { 
     const locals = {
       title: "NodeJS Blog",
-      description: "A Blog template application that will be used for your own use.",
+      description: "Simple Blog created with NodeJS, Express & MongoDb.",
     };
  
     let perPage = 3;
@@ -15,7 +15,7 @@ router.get("/", async (req, res)=> {
 
     const [data, count] = await Promise.all([
       Post.find()
-        .sort({ createdAt: -1 })
+        .sort({ createdAt: -1 }) // <-- sort by newest
         .skip(perPage * (page - 1))
         .limit(perPage),
       Post.countDocuments({}),
